@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"net/http"
 	"log"
+	"os"
 )
 
-const webContent = "Hello World!"
+// const webContent = "Hello World!中国、长城！"
 
 func main() {
 	http.HandleFunc("/", helloHandler)
@@ -14,5 +15,5 @@ func main() {
 }
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, webContent)
+	fmt.Fprint(w, os.Getenv("NODE_HOSTNAME"))
 }
